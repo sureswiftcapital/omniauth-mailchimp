@@ -20,16 +20,16 @@ module OmniAuth
       end
 
       uid {
-        raw_info["user_id"]
+        user_data['user_id']
       }
 
       info do
-        contact = raw_info["contact"] || {}
-
         {
-          :first_name => contact["fname"],
-          :last_name => contact["lname"],
-          :email => contact["email"]
+          :email => raw_info["email"],
+          :username => raw_info["username"],
+          :account_name => user_data["accountname"],
+          :api_endpoint => user_data["api_endpoint"],
+          :dc => user_data["dc"]
         }
       end
 
