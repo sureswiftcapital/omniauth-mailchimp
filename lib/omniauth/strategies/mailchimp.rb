@@ -10,7 +10,12 @@ module OmniAuth
       option :client_options, {
         :site => "https://login.mailchimp.com",
         :authorize_url => '/oauth2/authorize',
-        :token_url => '/oauth2/token'
+        :token_url => '/oauth2/token',
+        :auth_scheme => :request_body
+      }
+
+      option :auth_token_params, {
+        :expires_at => 100.years.from_now
       }
 
       def request_phase
